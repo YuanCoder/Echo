@@ -20,11 +20,11 @@ import org.apache.log4j.Logger;
 /**
  * @author Yuanjp
  * @date 2016/12/10
- * @deprecated echo ÇëÇó¹¤¾ßÀà
+ * @deprecated echo è¯·æ±‚å·¥å…·ç±»
  */
 public class HttpUtil {
 		
-		// ´´½¨CookieStoreÊµÀı  
+		// åˆ›å»ºCookieStoreå®ä¾‹  
 	    public static Logger loger=Logger.getLogger(HttpUtil.class);
 	    static CookieStore cookieStore = null;  
 	    static HttpClientContext context = null;  
@@ -39,9 +39,9 @@ public class HttpUtil {
  			httpGet.setHeader("Accept-Language", "zh-cn,zh;q=0.5");
  			httpGet.setHeader("Accept-Charset", "GB2312,utf-8;q=0.7,*;q=0.7");
  			httpGet.setHeader("Accept", "application/json,text/javascript,*/*;q=0.01");
- 			httpGet.setHeader("Accept-Encoding", "gzip, deflate"); //Accept-Encoding ÊÇä¯ÀÀÆ÷·¢¸ø·şÎñÆ÷,ÉùÃ÷ä¯ÀÀÆ÷Ö§³ÖµÄ±àÂëÀàĞÍ
+ 			httpGet.setHeader("Accept-Encoding", "gzip, deflate"); //Accept-Encoding æ˜¯æµè§ˆå™¨å‘ç»™æœåŠ¡å™¨,å£°æ˜æµè§ˆå™¨æ”¯æŒçš„ç¼–ç ç±»å‹
  			httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:47.0) Gecko/20100101 Firefox/47.0");
- 			httpGet.setHeader("Referer", "http://www.app-echo.com/");  //¸æËß·şÎñÆ÷ÊÇ´ÓÄÄ¸öÒ³ÃæÁ´½Ó¹ıÀ´µÄ£¬
+ 			httpGet.setHeader("Referer", "http://www.app-echo.com/");  //å‘Šè¯‰æœåŠ¡å™¨æ˜¯ä»å“ªä¸ªé¡µé¢é“¾æ¥è¿‡æ¥çš„ï¼Œ
  			httpGet.setHeader("X-Requested-With", "XMLHttpRequest"); 
  			httpGet.setHeader("Cookie", "PHPSESSID=admunbjjjp2l6v5nfq7uckb1v1; echo_language=0fa769e85f49c8f39f1a51b419d5ec98c7821fcdb7666236b7c498a20cee27fea%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22echo_language%22%3Bi%3A1%3Bs%3A2%3A%22cn%22%3B%7D; _csrf=03c9b2ae0599c72ef55836e471fb43ce4c9c83aedf7f743087d804b0fb928610a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227TJFB4HfrYks-6EHqvuA9s5iCdJXa5k6%22%3B%7D; MP_LIST=; Hm_lvt_46b3b8e7eb78200527b089c276c81a7e=1481631600; Hm_lpvt_46b3b8e7eb78200527b089c276c81a7e=1481637261");
  			httpGet.setHeader("Connection", "keep-alive");
@@ -57,15 +57,15 @@ public class HttpUtil {
 				if(entity!=null){
 	 			    	ins=entity.getContent();
 				 }
-				if(contentEncoding == null){  //·şÎñÆ÷·µ»ØÎ´Ñ¹ËõµÄÕıÎÄ
+				if(contentEncoding == null){  //æœåŠ¡å™¨è¿”å›æœªå‹ç¼©çš„æ­£æ–‡
 					 content = convertStreamToString(ins,"utf-8");
-				}else{    //·şÎñÆ÷·µ»ØGZIPÑ¹ËõµÄÕıÎÄ
+				}else{    //æœåŠ¡å™¨è¿”å›GZIPå‹ç¼©çš„æ­£æ–‡
 					 content = uncompress(ins,"utf-8");
 				}
 				
 			}else{
-				loger.debug("×ÊÔ´²»´æÔÚ statuCode="+statuCode);
-				return "×ÊÔ´²»´æÔÚ";
+				loger.debug("èµ„æºä¸å­˜åœ¨ statuCode="+statuCode);
+				return "èµ„æºä¸å­˜åœ¨";
 			}
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
@@ -86,7 +86,7 @@ public class HttpUtil {
 		}
 		
 		/**
-		 *  ·ÀÖ¹ÏìÓ¦·µ»ØÂÒÂë
+		 *  é˜²æ­¢å“åº”è¿”å›ä¹±ç 
 		 * @param is
 		 * @param charset
 		 * @return
@@ -114,9 +114,9 @@ public class HttpUtil {
 	    }  
 		
 		/**
-		 * GZIP½âÑ¹
+		 * GZIPè§£å‹
 		 * @param in
-		 * @param charset ×Ö·û±àÂë¸ñÊ½
+		 * @param charset å­—ç¬¦ç¼–ç æ ¼å¼
 		 * @return
 		 */
 		private static String uncompress(InputStream in, String charset) {

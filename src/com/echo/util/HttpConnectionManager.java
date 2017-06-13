@@ -22,34 +22,34 @@ public class HttpConnectionManager {
 	private static HttpParams httpParams;
 	private static ClientConnectionManager connectionManager;
 	
-	//×î´óÁ¬½ÓÊı
+	//æœ€å¤§è¿æ¥æ•°
 	public final static int MAX_TOTAL_CONNECTIONS = 800;
 	
-	//»ñÈ¡Á¬½ÓµÄ×î´óµÈ´ıÊ±¼ä
+	//è·å–è¿æ¥çš„æœ€å¤§ç­‰å¾…æ—¶é—´
 	public final static int WAIT_TIMEOUT = 60000;
 	
-	//Ã¿¸öÂ·ÓÉ×î´óÁ¬½ÓÊı
+	//æ¯ä¸ªè·¯ç”±æœ€å¤§è¿æ¥æ•°
 	public final static int MAX_ROUTE_CONNECTIONS = 400;
 	
-	//Á¬½Ó³¬Ê±Ê±¼ä
+	//è¿æ¥è¶…æ—¶æ—¶é—´
 	public final static int CONNECT_TIMEOUT = 60000;
 	
-	//¶ÁÈ¡³¬Ê±Ê±¼ä
+	//è¯»å–è¶…æ—¶æ—¶é—´
 	public final static int READ_TIMEOUT = 60000;
 	
 	static {
 		httpParams = new BasicHttpParams();
-		// ÉèÖÃ×î´óÁ¬½ÓÊı
+		// è®¾ç½®æœ€å¤§è¿æ¥æ•°
 		ConnManagerParams.setMaxTotalConnections(httpParams, MAX_TOTAL_CONNECTIONS);
-		// ÉèÖÃ»ñÈ¡Á¬½ÓµÄ×î´óµÈ´ıÊ±¼ä
+		// è®¾ç½®è·å–è¿æ¥çš„æœ€å¤§ç­‰å¾…æ—¶é—´
 		ConnManagerParams.setTimeout(httpParams, WAIT_TIMEOUT);
-		// ÉèÖÃÃ¿¸öÂ·ÓÉ×î´óÁ¬½ÓÊı
+		// è®¾ç½®æ¯ä¸ªè·¯ç”±æœ€å¤§è¿æ¥æ•°
 		ConnPerRouteBean connPerRoute = new ConnPerRouteBean(MAX_ROUTE_CONNECTIONS);
 		ConnManagerParams.setMaxConnectionsPerRoute(httpParams,connPerRoute);
 		
-		// ÉèÖÃÁ¬½Ó³¬Ê±Ê±¼ä
+		// è®¾ç½®è¿æ¥è¶…æ—¶æ—¶é—´
 		HttpConnectionParams.setConnectionTimeout(httpParams, CONNECT_TIMEOUT);
-		// ÉèÖÃ¶ÁÈ¡³¬Ê±Ê±¼ä
+		// è®¾ç½®è¯»å–è¶…æ—¶æ—¶é—´
 		HttpConnectionParams.setSoTimeout(httpParams, READ_TIMEOUT);
 	
 		SchemeRegistry registry = new SchemeRegistry();

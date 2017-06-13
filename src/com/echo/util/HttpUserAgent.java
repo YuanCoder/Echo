@@ -41,7 +41,7 @@ private static List<String> agents;
 		//Navigator   
 		agents.add("Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.12) Gecko/20080219 Firefox/2.0.0.12 Navigator/9.0.0.6");
 		
-		//360¼«ËÙä¯ÀÀÆ÷   
+		//360æé€Ÿæµè§ˆå™¨   
 		agents.add("Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ;  QIHU 360EE)");
 		
 	}

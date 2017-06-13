@@ -20,8 +20,6 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
-import com.echo.spider.EchoSpider;
-import com.echo.util.StringUtil;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -31,8 +29,17 @@ import java.awt.event.ActionEvent;
 import org.apache.log4j.Logger;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
+import com.echo.spider.EchoSpider;
+import com.echo.util.StringUtil;
+
 import java.awt.Toolkit;
 
+/**
+ * 
+ * @author Yuanjp
+ * @date 2016å¹´12æœˆ13æ—¥ ä¸Šåˆ11:03:19
+ *
+ */
 public class DownEchoFrm extends JFrame
 {
 	public static Logger loger=Logger.getLogger(DownEchoFrm.class);
@@ -52,10 +59,10 @@ public class DownEchoFrm extends JFrame
 			{
 				try
 				{   
-					org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF(); //¼ÓÔØBeautyEye 
-			        BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated; ////ÉèÖÃ±¾ÊôĞÔ½«¸Ä±ä´°¿Ú±ß¿òÑùÊ½¶¨Òå
- 					org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF(); //¼ÓÔØBeautyEye 
- 				    UIManager.put("RootPane.setupButtonVisible", false);//Òş²ØÉèÖÃ°´Å¥
+					org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF(); //åŠ è½½BeautyEye 
+			        BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated; ////è®¾ç½®æœ¬å±æ€§å°†æ”¹å˜çª—å£è¾¹æ¡†æ ·å¼å®šä¹‰
+ 					org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF(); //åŠ è½½BeautyEye 
+ 				    UIManager.put("RootPane.setupButtonVisible", false);//éšè—è®¾ç½®æŒ‰é’®
 					DownEchoFrm frame = new DownEchoFrm();
 					frame.setVisible(true);
 				} catch (Exception e)
@@ -74,7 +81,7 @@ public class DownEchoFrm extends JFrame
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(DownEchoFrm.class.getResource("/images/music2.png")));
 		setResizable(false);
-		setTitle("echo\u4E0B\u8F7D");
+		setTitle("echo\u4E0B\u8F7D v2.7  @Yuanjp");
 		setForeground(Color.LIGHT_GRAY);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 440, 125);
@@ -86,7 +93,7 @@ public class DownEchoFrm extends JFrame
 		
 		JLabel lblNewLabel = new JLabel("\u6B4C\u66F2id");
 		lblNewLabel.setIcon(new ImageIcon(DownEchoFrm.class.getResource("/images/music2.png")));
-		lblNewLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 16));
+		lblNewLabel.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 16));
 		
 		musicId_Txt = new JTextField();
 		musicId_Txt.setColumns(10);
@@ -94,13 +101,13 @@ public class DownEchoFrm extends JFrame
 		down_Btn = new JButton("\u4E0B\u8F7D");
 		down_Btn.setHorizontalAlignment(SwingConstants.LEFT);
 		down_Btn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) { //ÏÂÔØ
+			public void actionPerformed(ActionEvent e) { //ä¸‹è½½
 				downEchoActionPerformed(e); 
 			}
 
 		});
 		down_Btn.setIcon(new ImageIcon(DownEchoFrm.class.getResource("/images/download_red.png")));
-		down_Btn.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 15));
+		down_Btn.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 15));
 //		down_Btn.setBorder(BorderFactory.createRaisedBevelBorder());
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -132,7 +139,7 @@ public class DownEchoFrm extends JFrame
 	}
 	
 	/**
-	 * ÏÂÔØ
+	 * ä¸‹è½½
 	 * @param e
 	 */
 	public void downEchoActionPerformed(ActionEvent e){
@@ -140,8 +147,7 @@ public class DownEchoFrm extends JFrame
 		this.down_Btn.setEnabled(false);
 		
 		new Thread(new Runnable() { 
-
-			@Override
+			
 			public void run() {
 				
 				String musicId=musicId_Txt.getText().trim();
@@ -149,18 +155,18 @@ public class DownEchoFrm extends JFrame
 				if(StringUtil.isNotEmpty(musicId)){
 					flag=EchoSpider.getPageByUrl(musicId);
 				}else{
-					JOptionPane.showMessageDialog(null, "¸èÇúId²»ÄÜÎª¿Õ£¡");
+					JOptionPane.showMessageDialog(null, "æ­Œæ›²Idä¸èƒ½ä¸ºç©ºï¼");
 					down_Btn.setEnabled(true);
 					return;
 				}
 				down_Btn.setEnabled(true);
 				if(flag==true){
-					loger.debug("musicId="+musicId+"µÄ¸èÇúÏÂÔØ³É¹¦£¡");
-					JOptionPane.showMessageDialog(null, "ÏÂÔØ³É¹¦£¡");
+					loger.debug("musicId="+musicId+"çš„æ­Œæ›²ä¸‹è½½æˆåŠŸï¼");
+					JOptionPane.showMessageDialog(null, "ä¸‹è½½æˆåŠŸï¼");
 					return;
 				}else{
-					loger.debug("musicId="+musicId+"µÄ¸èÇúÏÂÔØÒì³££¡");
-					JOptionPane.showMessageDialog(null, "ÏÂÔØÒì³££¡");
+					loger.debug("musicId="+musicId+"çš„æ­Œæ›²ä¸‹è½½å¼‚å¸¸ï¼");
+					JOptionPane.showMessageDialog(null, "ä¸‹è½½å¼‚å¸¸ï¼");
 					return;
 				}
 				

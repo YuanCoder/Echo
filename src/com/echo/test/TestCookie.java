@@ -22,17 +22,17 @@ public class TestCookie
     	  CloseableHttpClient client=null;
     	  CloseableHttpResponse httpResponse=null;
     	  try{
-    		  CookieStore cookieStore=new BasicCookieStore();//±£¥Êcookie
-    		  client=HttpClients.custom().setDefaultCookieStore(cookieStore).build();//¥¥Ω®httpclient;
+    		  CookieStore cookieStore=new BasicCookieStore();//‰øùÂ≠òcookie
+    		  client=HttpClients.custom().setDefaultCookieStore(cookieStore).build();//ÂàõÂª∫httpclient;
     		  HttpGet get=new HttpGet("http://www.app-echo.com/v/dist-prod/style.css?v=99c5906");
     		
     		  get.setHeader("Cookie", "PHPSESSID=admunbjjjp2l6v5nfq7uckb1v1; echo_language=0fa769e85f49c8f39f1a51b419d5ec98c7821fcdb7666236b7c498a20cee27fea%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22echo_language%22%3Bi%3A1%3Bs%3A2%3A%22cn%22%3B%7D; _csrf=03c9b2ae0599c72ef55836e471fb43ce4c9c83aedf7f743087d804b0fb928610a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%227TJFB4HfrYks-6EHqvuA9s5iCdJXa5k6%22%3B%7D");
     		  httpResponse=client.execute(get);
     		  
-    		  System.out.println("∑µªÿ£∫"+httpResponse.getEntity().toString());
-    		  List<Cookie> cookies=cookieStore.getCookies();//ªÒ»°cookies
+    		  System.out.println("ËøîÂõûÔºö"+httpResponse.getEntity().toString());
+    		  List<Cookie> cookies=cookieStore.getCookies();//Ëé∑Âèñcookies
     		  for(int i=0;i<cookies.size();i++){
-    			  System.out.println("ªÒ»°µΩµƒcookies:"+cookies.get(i));
+    			  System.out.println("Ëé∑ÂèñÂà∞ÁöÑcookies:"+cookies.get(i));
     		  }
     	  }catch(Exception e){
     		  e.printStackTrace();

@@ -4,14 +4,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * 正则匹配歌曲json对象
+ * 姝ｅ垯鍖归厤姝屾洸json瀵硅薄
  * @author Yuan
  * @date 2016/12/10
  */
 public class RegexUtil {
 	 
 	/**
-	 * 提取歌曲json格式对象
+	 * 鎻愬彇姝屾洸json鏍煎紡瀵硅薄
 	 * @param script 
 	 * @return
 	 */

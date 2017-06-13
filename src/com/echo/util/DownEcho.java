@@ -23,8 +23,9 @@ import org.apache.log4j.Logger;
 
 
 /**
- * ÏÂÔØÀà
- * @author Yuan
+ * ä¸‹è½½ç±»
+ * @author Yuanjp
+ * @date 2016å¹´12æœˆ13æ—¥ ä¸Šåˆ11:04:06
  *
  */
 public class DownEcho {
@@ -32,13 +33,13 @@ public class DownEcho {
 	public static Logger loger=Logger.getLogger(DownEcho.class);
 	/**
 	 * 
-	 * @param urlString µØÖ· 
-	 * @param filename  ¸èÃû
-	 * @param savePath  ±£´æÂ·¾¶
+	 * @param urlString åœ°å€ 
+	 * @param filename  æ­Œå
+	 * @param savePath  ä¿å­˜è·¯å¾„
 	 * @throws Exception
 	 */
 	public static boolean download(String urlString, String filename,String savePath){  
-        // ¹¹ÔìURL  
+        // æ„é€ URL  
         URL url=null;
         HttpsURLConnection con=null;
         InputStream is =null;
@@ -49,32 +50,32 @@ public class DownEcho {
 			TrustManager[] tm = { new MyX509TrustManager() };
 	        SSLContext sslContext = SSLContext.getInstance("SSL", "SunJSSE");
 	        sslContext.init(null, tm, new java.security.SecureRandom());
-	        // ´ÓÉÏÊöSSLContext¶ÔÏóÖĞµÃµ½SSLSocketFactory¶ÔÏó  
+	        // ä»ä¸Šè¿°SSLContextå¯¹è±¡ä¸­å¾—åˆ°SSLSocketFactoryå¯¹è±¡  
 	        SSLSocketFactory ssf = sslContext.getSocketFactory();
 			url = new URL(urlString);
-			// ´ò¿ªÁ¬½Ó  
+			// æ‰“å¼€è¿æ¥  
 	        con = (HttpsURLConnection) url.openConnection();  
-	        // ÉèÖÃÓòÃûĞ£Ñé
+	        // è®¾ç½®åŸŸåæ ¡éªŒ
 	        con.setHostnameVerifier(new DownEcho().new TrustAnyHostnameVerifier());
-	        //ÉèÖÃÇëÇó³¬Ê±Îª10s  
+	        //è®¾ç½®è¯·æ±‚è¶…æ—¶ä¸º10s  
 	        con.setConnectTimeout(10*1000);  
 	        //
 	        con.setSSLSocketFactory(ssf);
-	        // ÊäÈëÁ÷  
+	        // è¾“å…¥æµ  
 	        is= con.getInputStream();  
 	      
-	        // 1KµÄÊı¾İ»º³å  
+	        // 1Kçš„æ•°æ®ç¼“å†²  
 	        bs= new byte[1024];  
-	        // ¶ÁÈ¡µ½µÄÊı¾İ³¤¶È  
+	        // è¯»å–åˆ°çš„æ•°æ®é•¿åº¦  
 	        int len;  
-	        // Êä³öµÄÎÄ¼şÁ÷  
+	        // è¾“å‡ºçš„æ–‡ä»¶æµ  
 	       File sf=new File(savePath);  
 	       System.out.println(sf.getAbsolutePath());
 	       if(!sf.exists()){  
 	           sf.mkdirs();  
 	       }  
 	       os= new FileOutputStream(sf.getPath()+"\\"+filename,true);  
-	        // ¿ªÊ¼¶ÁÈ¡  
+	        // å¼€å§‹è¯»å–  
 	        while ((len = is.read(bs)) != -1) {  
 	          os.write(bs, 0, len);  
 	        }  
@@ -100,7 +101,7 @@ public class DownEcho {
 			loger.debug(e);
 			return false;
 		}finally{
-			// Íê±Ï£¬¹Ø±ÕËùÓĞÁ´½Ó  
+			// å®Œæ¯•ï¼Œå…³é—­æ‰€æœ‰é“¾æ¥  
 			try
 			{
 				 if(os!=null){os.close();}
@@ -117,13 +118,13 @@ public class DownEcho {
     }   
 	
 	 /**
-     * https ÓòÃûĞ£Ñé
+     * https åŸŸåæ ¡éªŒ
      * @author biezhi
      * @since 1.0
      */
     public class TrustAnyHostnameVerifier implements HostnameVerifier {
         public boolean verify(String hostname, SSLSession session) {
-            return true;// Ö±½Ó·µ»Øtrue
+            return true;// ç›´æ¥è¿”å›true
         }
     }
 }

@@ -7,28 +7,24 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * Ö¤ÊéĞÅÈÎ¹ÜÀíÆ÷£¨ÓÃÓÚhttpsÇëÇó£©
- * Õâ¸öÖ¤Êé¹ÜÀíÆ÷µÄ×÷ÓÃ¾ÍÊÇÈÃËüĞÅÈÎÎÒÃÇÖ¸¶¨µÄÖ¤Êé£¬ÏÂÃæµÄ´úÂëÒâÎ¶×ÅĞÅÈÎËùÓĞÖ¤Êé£¬²»¹ÜÊÇ·ñÈ¨Íş»ú¹¹°ä·¢¡£
- * @author Yuan
+ * è¯ä¹¦ä¿¡ä»»ç®¡ç†å™¨ï¼ˆç”¨äºhttpsè¯·æ±‚ï¼‰  20170613å°†JDK ä¸º1.8    ä¹‹å‰ä¸º1.6  å»æ‰@Overrideæ³¨è§£
+ * è¿™ä¸ªè¯ä¹¦ç®¡ç†å™¨çš„ä½œç”¨å°±æ˜¯è®©å®ƒä¿¡ä»»æˆ‘ä»¬æŒ‡å®šçš„è¯ä¹¦ï¼Œä¸‹é¢çš„ä»£ç æ„å‘³ç€ä¿¡ä»»æ‰€æœ‰è¯ä¹¦ï¼Œä¸ç®¡æ˜¯å¦æƒå¨æœºæ„é¢å‘ã€‚
  *
  */
 public class MyX509TrustManager implements  X509TrustManager, TrustManager{
 
-	@Override
 	public void checkClientTrusted(X509Certificate[] chain, String authType)
 			throws CertificateException {
 		
 		
 	}
 
-	@Override
 	public void checkServerTrusted(X509Certificate[] chain, String authType)
 			throws CertificateException {
 		
 		
 	}
 
-	@Override
 	public X509Certificate[] getAcceptedIssuers() {
 
 		return null;

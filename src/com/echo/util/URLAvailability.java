@@ -4,8 +4,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /** 
-* ÎÄ¼şÃû³ÆÎª£ºURLAvailability.java 
-* ÎÄ¼ş¹¦ÄÜ¼òÊö£º ÃèÊöÒ»¸öURLµØÖ·ÊÇ·ñÓĞĞ§ 
+* æ–‡ä»¶åç§°ä¸ºï¼šURLAvailability.java 
+* æ–‡ä»¶åŠŸèƒ½ç®€è¿°ï¼š æè¿°ä¸€ä¸ªURLåœ°å€æ˜¯å¦æœ‰æ•ˆ 
 * @author Jason 
 * @time   2010-9-14  
 *  
@@ -17,9 +17,9 @@ public class URLAvailability {
 	private static int state = -1;  
   
 	/** 
-	   * ¹¦ÄÜ£º¼ì²âµ±Ç°URLÊÇ·ñ¿ÉÁ¬½Ó»òÊÇ·ñÓĞĞ§, 
-	   * ÃèÊö£º×î¶àÁ¬½ÓÍøÂç 5 ´Î, Èç¹û 5 ´Î¶¼²»³É¹¦£¬ÊÓÎª¸ÃµØÖ·²»¿ÉÓÃ 
-	   * @param urlStr Ö¸¶¨URLÍøÂçµØÖ· 
+	   * åŠŸèƒ½ï¼šæ£€æµ‹å½“å‰URLæ˜¯å¦å¯è¿æ¥æˆ–æ˜¯å¦æœ‰æ•ˆ, 
+	   * æè¿°ï¼šæœ€å¤šè¿æ¥ç½‘ç»œ 5 æ¬¡, å¦‚æœ 5 æ¬¡éƒ½ä¸æˆåŠŸï¼Œè§†ä¸ºè¯¥åœ°å€ä¸å¯ç”¨ 
+	   * @param urlStr æŒ‡å®šURLç½‘ç»œåœ°å€ 
 	   * @return URL 
 	   */  
 	public synchronized boolean isConnect(String urlStr) {  
@@ -33,16 +33,16 @@ public class URLAvailability {
 	     url = new URL(urlStr);  
 	     con = (HttpURLConnection) url.openConnection();  
 	     state = con.getResponseCode();  
-	     System.out.println((++counts) +"´Îhttpcode= "+state);  
+	     System.out.println((++counts) +"æ¬¡httpcode= "+state);  
 	     if (state == 200) {  
-	      System.out.println("URL¿ÉÓÃ£¡");  
+	      System.out.println("URLå¯ç”¨ï¼");  
 	      flag=true;
 	      break;  
 	     }  
 	   
 	    }catch (Exception ex) {  
 	     counts++;   
-	     System.out.println("URL²»¿ÉÓÃ£¬Á¬½ÓµÚ "+counts+" ´Î");  
+	     System.out.println("URLä¸å¯ç”¨ï¼Œè¿æ¥ç¬¬ "+counts+" æ¬¡");  
 	     urlStr = null;  
 	     continue;  
 	    }  

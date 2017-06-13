@@ -11,7 +11,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 /**
- * ×¥È¡echoÒôÀÖ
+ * æŠ“å–echoéŸ³ä¹
  * @author Yuanjp
  *
  */
@@ -20,16 +20,16 @@ public class EchoSpider {
 	
 	public static Logger loger=Logger.getLogger(EchoSpider.class);
 	/**
-	 * ºÜ¾ÃÖ®Ç° ÓÃ .m3u8¸ñÊ½±£´æ
-	 * ºóÃæÓÃ.mp3
-	 * ÏÖÔÚÓÖ±äÁË
+	 * å¾ˆä¹…ä¹‹å‰ ç”¨ .m3u8æ ¼å¼ä¿å­˜
+	 * åé¢ç”¨.mp3
+	 * ç°åœ¨åˆå˜äº†
 	 * @param id
 	 * @return
 	 */
 	public static boolean  getPageByUrl(String id){
   		   String url="http://www.app-echo.com/sound/api-infos?ids="+id;
-// 		   String url="http://www.app-echo.com/api/sound/info?id="+id;//¸ÃurlÒ²¿É
-		   String musicName=null; //¸èÃû
+// 		   String url="http://www.app-echo.com/api/sound/info?id="+id;//è¯¥urlä¹Ÿå¯
+		   String musicName=null; //æ­Œå
 		   JSONArray jsonAry=null;
 		   String musicUrl=null;
 		   String picUrl=null; 
@@ -45,7 +45,7 @@ public class EchoSpider {
 			
 			   JSONObject soundObj=JSONObject.fromObject(resultJson);
 			   if(soundObj.isNullObject()){
-				   loger.debug("soundObjÎª¿Õ");
+				   loger.debug("soundObjä¸ºç©º");
 				   return false;
 			   }
 			   jsonAry=soundObj.getJSONArray("desc");

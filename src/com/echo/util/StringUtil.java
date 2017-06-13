@@ -1,14 +1,14 @@
 package com.echo.util;
 
 /**
- * ×Ö·û´®¹¤¾ßÀà
- * @author Yuan
- *
+ *  å­—ç¬¦ä¸²å·¥å…·ç±»
+ * @author Yuanjp
+ * @date 2016å¹´12æœˆ13æ—¥ ä¸Šåˆ11:04:59
  */
 public class StringUtil {
 
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÊÇ¿Õ
+	 * åˆ¤æ–­æ˜¯å¦æ˜¯ç©º
 	 * @param str
 	 * @return
 	 */
@@ -21,7 +21,7 @@ public class StringUtil {
 	}
 	
 	/**
-	 * ÅĞ¶ÏÊÇ·ñ²»ÊÇ¿Õ
+	 * åˆ¤æ–­æ˜¯å¦ä¸æ˜¯ç©º
 	 * @param str
 	 * @return
 	 */
