@@ -33,4 +33,20 @@ public class StringUtil {
 		}
 	}
 	
+	/**
+	 * 过滤掉/ \ 等字符
+	 * @param str
+	 * @return
+	 */
+	public static String filterStr(String str){
+		String newStr=null;
+		newStr=str.replaceAll("/", "").replaceAll("\\\\",  "");
+		
+		return newStr;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(StringUtil.filterStr("电音迷不能错过的现场 Around the World / Harder\\ Better Faster Stronger (Live)"));
+	}
+	
 }

@@ -64,6 +64,7 @@ public class EchoSpider {
 			 /*  loger.debug("musicUrl="+musicUrl);
 			   loger.debug("picUrl="+picUrl);*/
 			   if(musicName!=null) musicName=musicName.trim();
+			   musicName=StringUtil.filterStr(musicName); 
 			   flag=DownEcho.download(musicUrl, musicName+".mp3", "c:/echo/music/");//main\resources  WebContent/Music2/
 			  if(!flag){
 				  return false;
