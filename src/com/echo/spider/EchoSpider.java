@@ -1,10 +1,12 @@
 package com.echo.spider;
 
 
+import org.apache.http.client.methods.HttpGet;
 import org.apache.log4j.Logger;
 
+import com.echo.constant.ConstantParams;
+import com.echo.util.ClientGet;
 import com.echo.util.DownEcho;
-import com.echo.util.HttpUtil;
 import com.echo.util.StringUtil;
 
 import net.sf.json.JSONArray;
@@ -27,18 +29,28 @@ public class EchoSpider {
 	 * @return
 	 */
 	public static boolean  getPageByUrl(String id){
-  		   String url="http://www.app-echo.com/sound/api-infos?ids="+id;
-// 		   String url="http://www.app-echo.com/api/sound/info?id="+id;//该url也可
+  		   String url=ConstantParams.URL+id;
 		   String musicName=null; //歌名
 		   JSONArray jsonAry=null;
 		   String musicUrl=null;
 		   String picUrl=null; 
 		   boolean flag=true;
+		   HttpGet httpGet = new HttpGet(url);// 创建get请求    
+	        httpGet.setHeader("Host", ConstantParams.HOST);
+			httpGet.setHeader("Accept-Language", ConstantParams.ACCEPT_LANGUAGE);
+			httpGet.setHeader("Accept-Charset", ConstantParams.ACCEPT_CHARSET);
+			httpGet.setHeader("Accept", ConstantParams.ACCEPT);
+			httpGet.setHeader("Accept-Encoding", ConstantParams.Accept_Encoding); //Accept-Encoding 是浏览器发给服务器,声明浏览器支持的编码类型
+			httpGet.setHeader("User-Agent", ConstantParams.User_Agent);
+			httpGet.setHeader("Referer", ConstantParams.REFERER);  //告诉服务器是从哪个页面链接过来的，
+			httpGet.setHeader("X-Requested-With", ConstantParams.X_REQUESTED_WITH); 
+			httpGet.setHeader("Cookie", ConstantParams.COOKIE);
+			httpGet.setHeader("Connection", ConstantParams.CONNECTION);
 		   
 		   try{
-			   String resultJson=HttpUtil.get(url);
+			   String resultJson=ClientGet.getInstance().sendHttpGet(httpGet);
 			
-//			   loger.debug("resultJson="+resultJson.toString());
+			   loger.debug("resultJson="+resultJson.toString());
 			   if(StringUtil.isEmpty(resultJson)){
 				  return false;
 			   }
@@ -48,28 +60,24 @@ public class EchoSpider {
 				   loger.debug("soundObj为空");
 				   return false;
 			   }
-			   jsonAry=soundObj.getJSONArray("desc");
+			   jsonAry=soundObj.getJSONArray(ConstantParams.DESC);
 			   if(jsonAry.isEmpty()){
 				   return false;
 			   }
-//			   System.out.println("jsonAry="+jsonAry.toString());
+			   loger.debug("jsonAry="+jsonAry.toString());
 			   soundObj=jsonAry.getJSONObject(0);
-//			   System.out.println("soundObject="+soundObj.toString());
 			   
-			   musicName=soundObj.getString("name");
-			   musicUrl=soundObj.getString("source");
-			   picUrl=soundObj.getString("pic");
-			   
-			   loger.debug("musicName="+musicName);
-			 /*  loger.debug("musicUrl="+musicUrl);
-			   loger.debug("picUrl="+picUrl);*/
+			   musicName=soundObj.getString(ConstantParams.NAME);
+			   musicUrl=soundObj.getString(ConstantParams.SOURCE);
+			   picUrl=soundObj.getString(ConstantParams.PIC);
+			
 			   if(musicName!=null) musicName=musicName.trim();
 			   musicName=StringUtil.filterStr(musicName); 
-			   flag=DownEcho.download(musicUrl, musicName+".mp3", "c:/echo/music/");//main\resources  WebContent/Music2/
+			   flag=DownEcho.download(musicUrl, musicName+".mp3", ConstantParams.SAVE_MUSIC_PATH);//main\resources  WebContent/Music2/
 			  if(!flag){
 				  return false;
 			  }
-			   flag=DownEcho.download(picUrl, musicName+".png", "c:/echo/pic/");//main\resources  WebContent/Music2/
+			   flag=DownEcho.download(picUrl, musicName+".png", ConstantParams.SAVE_PIC_PATH);//main\resources  WebContent/Music2/
 			   if(!flag){
 					  return false;
 				  }
